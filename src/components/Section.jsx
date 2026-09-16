@@ -1,0 +1,2 @@
+import {useEffect,useRef} from 'react';
+export default function Section({id,className='',children}){const ref=useRef(null);useEffect(()=>{const el=ref.current;const obs=new IntersectionObserver(([e])=>e.isIntersecting&&el.classList.add('is-visible'),{threshold:.12});obs.observe(el);return()=>obs.disconnect()},[]);return <section ref={ref} id={id} className={`reveal scroll-mt-20 ${className}`}>{children}</section>}
